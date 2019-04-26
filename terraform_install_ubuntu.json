@@ -1,0 +1,40 @@
+{
+  "description": "This is a basic packer file for building a simple GCP Image containing Terraform",
+  "variables": {
+    "account_file": "accounts.json",
+    "project_id": "jeremiah-sbx",
+    "install_bucket": "jj-install-bucket/install_files",
+    "terraform_version": "0.11.13",
+    "image": "ubuntu-1804-bionic-v20190404",
+    "os_version_tag": "Ubuntu 18.04 LTS",
+    "ssh_user": "ubuntu",
+    "zone": "us-east4-c",
+    "inst_type": "g1-small"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "{{user `account_file`}}",
+      "project_id": "{{user `project_id`}}",
+      "zone": "{{user `zone`}}",
+      "source_image": "{{user `image`}}",
+      "machine_type": "{{user `inst_type`}}",
+      "ssh_username": "{{user `ssh_user`}}",
+      "image_name": "terraform-ubuntu-{{isotime \"2006-01-02-030405\"}}"
+    }
+  ],
+  "_provisioners_comment": "Comment",
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "{{template_dir}}/install_files",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "bash /tmp/install_files/install-terraform.sh --install-bucket {{user `install_bucket`}} --version {{user `terraform_version`}}"
+      ]
+    }
+  ]
+}

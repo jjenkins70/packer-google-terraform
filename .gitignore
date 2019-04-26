@@ -1,3 +1,5 @@
 #GIT Ignore
 *.iml
 .idea/
+accounts.json
+*.zip
