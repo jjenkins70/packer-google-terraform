@@ -62,7 +62,7 @@ function install_dependencies {
 
   if $(has_apt_get); then
     sudo apt-get update -y
-    sudo apt-get install -y curl unzip jq curl
+    sudo apt-get install -y curl unzip jq
     sudo apt-get upgrade -y
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
     export PATH=$PATH:/snap/bin  #gsutil isn't found without the path being updated
