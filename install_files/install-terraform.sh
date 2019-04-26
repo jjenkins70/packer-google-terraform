@@ -90,7 +90,7 @@ function get_terraform_binary {
     curl -O https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_linux_amd64.zip
     curl -Os https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_SHA256SUMS
     curl -Os https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_SHA256SUMS.sig
-    ret=`shasum -a 256 -c terraform_${ver}_SHA256SUMS 2> /dev/null |grep terraform_${ver}_linux_amd64.zip| grep OK | cut -d' ' -f2`
+    ret=`sha256sum -c terraform_${ver}_SHA256SUMS 2> /dev/null |grep terraform_${ver}_linux_amd64.zip| grep OK | cut -d' ' -f2`
     if [ "${ret}" != "OK" ]; then
       log "ERROR" ${func} "The copy of the Terraform binary failed"
       exit
