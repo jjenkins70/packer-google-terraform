@@ -5,9 +5,9 @@
     "project_id": "jeremiah-sbx",
     "install_bucket": "jj-install-bucket/install_files",
     "terraform_version": "0.12.4",
-    "image": "centos-7-v20190619",
-    "os_version_tag": "CentOS 7",
-    "ssh_user": "centos",
+    "image": "debian-9-stretch-v20190618",
+    "os_version_tag": "Debian 9",
+    "ssh_user": "debian",
     "zone": "us-east4-c",
     "inst_type": "g1-small"
   },
@@ -20,7 +20,7 @@
       "source_image": "{{user `image`}}",
       "machine_type": "{{user `inst_type`}}",
       "ssh_username": "{{user `ssh_user`}}",
-      "image_name": "terraform-centos-{{isotime \"2006-01-02-030405\"}}"
+      "image_name": "terraform-debian9-{{isotime \"2006-01-02-030405\"}}"
     }
   ],
   "_provisioners_comment": "Comment",

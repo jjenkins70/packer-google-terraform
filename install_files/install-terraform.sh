@@ -24,7 +24,7 @@ function print_usage {
   echo -e "or..."
   echo -e "  --version\t\t The Terraform version required to be downloaded from Hashicorp Releases. Required."
   echo
-  echo "This script can be used to install Terraform and its dependencies. This script has been tested with Ubuntu 18.04 and Centos 7."
+  echo "This script can be used to install Terraform and its dependencies. This script has been tested with Ubuntu 18.04, Debian 9 and Centos 7."
   echo
 }
 
